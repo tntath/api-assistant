@@ -1,15 +1,32 @@
-from fastapi import FastAPI
-from app.github_api.fetch import save_github_api
+from fastapi import FastAPI, HTTPException
 
-app = FastAPI()
+from app.github_api.assistant import GithubApiAssistant
+from app.github_api.fetch import save_github_api
+from app.github_api.router import router as github_api_router
+
+description = """
+# GitHub API Assistant
+
+This is a simple API that uses GPT-3 to answer questions about the GitHub API.
+
+## How to use it?
+* If you want to refresh the GitHub API file, go to /refresh-github-api.
+
+* If you want to ask a question about the GitHub API, go to /ask?question=YOUR_QUESTION.
+
+"""
+
+app = FastAPI(title="GitHub API Assistant", description=description)
 
 
 @app.get("/")
-async def root():
-    return {"message": "Hello World"}
+async def root() -> dict[str, str]:
+    """
+    Greeting endpoint
+    """
+    return {
+        "message": "Hello World! if you want to check the API through Swagger, go to /docs. "
+    }
 
 
-@app.get("/refresh-github-api")
-async def refresh_github_api_file():
-    save_github_api()
-    return {"message": "GitHub API refreshed!"}
+app.include_router(github_api_router, tags=["github-api"])

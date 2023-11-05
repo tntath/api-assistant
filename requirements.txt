@@ -5,3 +5,9 @@ pytest
 black
 mypy
 requests
+openai
+torch==2.0.1
+sentence-transformers
+faiss-cpu
+pandas
+numpy
