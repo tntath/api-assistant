@@ -59,7 +59,7 @@ The next steps for this project could be:
 - Connect the API to a proper UI
 - Rate limiting and caching to reduce redundant API calls to the LLM.
 - User authentication for personalized recommendations.
-
+- Add more tests. 
 
 Please note that this project is an implementation of a coding challenge and is meant for demonstration purposes only.
 
