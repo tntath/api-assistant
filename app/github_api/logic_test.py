@@ -30,9 +30,7 @@ class TestFetchGithubApi:
         assert "mock_key" in data
         assert data["mock_key"] == "mock_response"
 
-    def test_saved_github_api(
-        self,
-    ) -> None:
+    def test_saved_github_api(self) -> None:
         if not os.path.exists(save_path):
             save_github_api()
 
