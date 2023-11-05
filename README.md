@@ -6,7 +6,7 @@ The application is developed using FastAPI and OpenAI's API. It is containerized
 
 ## Features
   - Refresh the stored GitHub API file
-  - Refresh the GitHub Api's embeddings
+  - Refresh the GitHub API's embeddings
   - Ask chatGPT-3.5 a question regarding GitHub's API stored in the container
 
 ## Prerequisites
