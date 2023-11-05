@@ -1,0 +1,17 @@
+{
+    "paths": {
+        "/endpoint1": {
+            "get": {
+                "description": "Get endpoint 1"
+            },
+            "post": {
+                "description": "Post endpoint 1"
+            }
+        },
+        "/endpoint2": {
+            "get": {
+                "description": "Get endpoint 2"
+            }
+        }
+    }
+}

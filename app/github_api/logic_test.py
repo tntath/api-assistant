@@ -3,7 +3,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from app.github_api.fetch import fetch_github_api, save_github_api
+from app.github_api.logic import fetch_github_api, save_github_api
 from config import DATA_DIR
 
 save_path = os.path.join(DATA_DIR, "github_api_spec.json")
@@ -12,7 +12,7 @@ save_path = os.path.join(DATA_DIR, "github_api_spec.json")
 @pytest.fixture
 def mock_get_requests(monkeypatch):
     mock = Mock()
-    monkeypatch.setattr("app.github_api.fetch.get", mock)
+    monkeypatch.setattr("app.github_api.logic.get", mock)
     return mock
 
 

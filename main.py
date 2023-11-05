@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 
 from app.github_api.assistant import GithubApiAssistant
-from app.github_api.fetch import save_github_api
+from app.github_api.logic import save_github_api
 from app.github_api.router import router as github_api_router
 
 description = """

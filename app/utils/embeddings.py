@@ -5,14 +5,16 @@ import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-from config import EBEDDINGS_PATH, GITHUB_API_SPEC_PATH
+from config import EMBEDDINGS_PATH, GITHUB_API_SPEC_PATH
 
 model = SentenceTransformer("multi-qa-MiniLM-L6-cos-v1")
 
 
 class Embeddings:
-    def __init__(self):
-        with open(GITHUB_API_SPEC_PATH, "r") as file:
+    def __init__(
+        self, github_api_path=GITHUB_API_SPEC_PATH, embeddings_path=EMBEDDINGS_PATH
+    ):
+        with open(github_api_path, "r") as file:
             api_spec = json.load(file)
 
         self.api_texts = [
@@ -21,17 +23,17 @@ class Embeddings:
             for _, endpoint_info in endpoint_data.items()
         ]
 
-        if not os.path.exists(EBEDDINGS_PATH):
-            self.generate_and_save_embeddings()
+        if not os.path.exists(embeddings_path):
+            self.generate_and_save_embeddings(embeddings_path)
 
-        self.api_embeddings = self.load_embeddings()
+        self.api_embeddings = self.load_embeddings(embeddings_path)
 
-    def generate_and_save_embeddings(self) -> None:
+    def generate_and_save_embeddings(self, embeddings_path) -> None:
         api_embeddings = model.encode(self.api_texts)
-        np.save(EBEDDINGS_PATH, api_embeddings)
+        np.save(embeddings_path, api_embeddings)
 
-    def load_embeddings(self) -> np.ndarray:
-        return np.load(EBEDDINGS_PATH)
+    def load_embeddings(self, embeddings_path) -> np.ndarray:
+        return np.load(embeddings_path)
 
     def search_with_embeddings(self, query: str, k: int = 10) -> list[str]:
         api_embeddings = self.api_embeddings
