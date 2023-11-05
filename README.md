@@ -32,7 +32,7 @@ cd api-assistant
 OPENAI_API_KEY=<your own OpenAI key>
 
 # Start the Docker containers
-docker-compose up -d
+docker-compose up --build
 ```
 
 ## API Documentation
