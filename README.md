@@ -19,7 +19,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Running the Application
 
-To run the Todo List API, follow these steps:
+To run the app, follow these steps:
 
 ```
 # Clone the repository
