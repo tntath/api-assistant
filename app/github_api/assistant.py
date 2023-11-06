@@ -12,7 +12,13 @@ class GithubApiAssistant:
     def __init__(self):
         self.embeddings = Embeddings()
 
-    def ask(self, query) -> str:
+    def ask(self, query: str) -> list[str]:
+        """Ask a question to the GitHub API assistant
+        Params:
+            query: str
+        Returns:
+            list[str]: list of answers
+        """
         results = self.embeddings.search_with_embeddings(query)
 
         results_str = "\n".join(results)

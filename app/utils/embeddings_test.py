@@ -4,6 +4,8 @@ from config import EMBEDDINGS_PATH_TEST, GITHUB_API_SPEC_PATH_TEST
 
 class TestEmbeddings:
     def test_search_with_embeddings(self):
+        """Tests the search_with_embeddings method"""
+
         query = "Get endpoint"
         embeddings = Embeddings(
             github_api_path=GITHUB_API_SPEC_PATH_TEST,

@@ -11,6 +11,12 @@ save_path = os.path.join(DATA_DIR, "github_api_spec.json")
 
 @pytest.fixture
 def mock_get_requests(monkeypatch):
+    """Mock requests.get()
+    Params:
+        monkeypatch: pytest fixture
+    Returns:
+        mock: Mock object
+    """
     mock = Mock()
     monkeypatch.setattr("app.github_api.logic.get", mock)
     return mock
@@ -18,6 +24,12 @@ def mock_get_requests(monkeypatch):
 
 class TestFetchGithubApi:
     def test_fetch_github_api(self, mock_get_requests) -> None:
+        """Test fetch_github_api()
+        Params:
+            mock_get_requests: mock fixture
+        Returns:
+            None
+        """
         mock_get_requests.return_value.status_code = 200
         mock_get_requests.return_value.json.return_value = {"mock_key": "mock_response"}
 
@@ -31,6 +43,12 @@ class TestFetchGithubApi:
         assert data["mock_key"] == "mock_response"
 
     def test_saved_github_api(self) -> None:
+        """Test the saved github api spec
+        Params:
+            None
+        Returns:
+            None
+        """
         if not os.path.exists(save_path):
             save_github_api()
 

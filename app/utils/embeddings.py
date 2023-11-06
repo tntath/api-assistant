@@ -28,14 +28,33 @@ class Embeddings:
 
         self.api_embeddings = self.load_embeddings(embeddings_path)
 
-    def generate_and_save_embeddings(self, embeddings_path) -> None:
+    def generate_and_save_embeddings(self, embeddings_path: str) -> None:
+        """Generates and saves the embeddings
+        Params:
+            embeddings_path: str
+        Returns:
+            None
+        """
         api_embeddings = model.encode(self.api_texts)
         np.save(embeddings_path, api_embeddings)
 
-    def load_embeddings(self, embeddings_path) -> np.ndarray:
+    def load_embeddings(self, embeddings_path: str) -> np.ndarray:
+        """Loads the embeddings
+        Params:
+            embeddings_path: str
+        Returns:
+            np.ndarray
+        """
         return np.load(embeddings_path)
 
     def search_with_embeddings(self, query: str, k: int = 10) -> list[str]:
+        """Searches the embeddings for the query
+        Params:
+            query: str
+            k: int
+        Returns:
+            list[str]: list of results
+        """
         api_embeddings = self.api_embeddings
         index = faiss.IndexFlatL2(api_embeddings.shape[1])
         index.add(api_embeddings)
