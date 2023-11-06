@@ -13,9 +13,9 @@ save_path = os.path.join(DATA_DIR, "github_api_spec.json")
 
 def fetch_github_api() -> Response | None:
     """Fetches the GitHub API spec from the GitHub repository.
-    params:
+    Params:
         None
-    returns:
+    Returns:
         Response | None
     """
     response = get(URL)
@@ -25,9 +25,9 @@ def fetch_github_api() -> Response | None:
 
 def save_github_api() -> None:
     """Saves the GitHub API spec to the DATA_DIR.
-    params:
+    Params:
         None
-    returns:
+    Returns:
         None
     """
     data = fetch_github_api()

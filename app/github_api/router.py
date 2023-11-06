@@ -11,6 +11,10 @@ router = APIRouter()
 async def refresh_github_api_file() -> dict[str, str]:
     """
     Refreshes the GitHub API file
+    Params:
+        None
+    Returns:
+        dict[str, str]: message
     """
     save_github_api()
     return {"message": "GitHub API refreshed!"}
@@ -20,6 +24,10 @@ async def refresh_github_api_file() -> dict[str, str]:
 async def refresh_embeddings() -> dict[str, str]:
     """
     Refreshes the embeddings
+    Params:
+        None
+    Returns:
+        dict[str, str]: message
     """
     embeddings = Embeddings()
     embeddings.generate_and_save_embeddings()
@@ -30,6 +38,10 @@ async def refresh_embeddings() -> dict[str, str]:
 async def ask_gpt(question: str) -> dict[str, str]:
     """
     Returns an answer to a question about the GitHub API
+    Params:
+        question: str
+    Returns:
+        dict[str, str]: response
     """
     if not question:
         raise HTTPException(status_code=400, detail="Question is empty")
